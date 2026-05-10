@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Container, Typography, Box, Divider, Grid, Button } from '@mui/material';
 
 const plates = [
@@ -46,6 +47,8 @@ const plates = [
 const inquiryEmail = 'info@mijaresgallery.com';
 
 const Products = () => {
+  useEffect(() => { document.title = 'The Collection | Mijares Gallery'; }, []);
+
   return (
     <Box sx={{ backgroundColor: '#F8F4EE', minHeight: '100%' }}>
 

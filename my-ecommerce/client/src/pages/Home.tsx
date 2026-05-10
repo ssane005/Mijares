@@ -1,14 +1,17 @@
+import { useEffect } from 'react';
 import { Container, Typography, Box, Button, Divider, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const featuredWorks = [
-  { image: '/Mijares/images/plate-harbor-geometric.jpg', title: 'Harbor — Geometric Composition', detail: '$1,200 · Ceramic plate' },
   { image: '/Mijares/images/plate-cream-girl-with-rose.jpg', title: 'Girl with Rose', detail: '$1,100 · Ceramic plate' },
   { image: '/Mijares/images/plate-blue-abstract-figures.jpg', title: 'Abstract Figures in Blue', detail: '$950 · Ceramic plate' },
   { image: '/Mijares/images/plate-blue-geometric-figure.jpg', title: 'Geometric Figure in Blue', detail: '$900 · Ceramic plate' },
+  { image: '/Mijares/images/plate-mauve-biomorphic.jpg', title: 'Biomorphic Forms — Mauve', detail: '$850 · Ceramic plate' },
 ];
 
 const Home = () => {
+  useEffect(() => { document.title = 'Mijares Gallery'; }, []);
+
   return (
     <>
       {/* Hero — split layout */}
@@ -18,19 +21,21 @@ const Home = () => {
           borderBottom: '1px solid #D4CCC6',
           minHeight: { xs: 'auto', md: '85vh' },
           display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
           alignItems: 'stretch',
         }}
       >
         {/* Text side */}
         <Box
           sx={{
-            flex: '0 0 42%',
+            flex: { xs: 'none', md: '0 0 42%' },
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             px: { xs: 4, md: 10 },
-            py: { xs: 10, md: 0 },
-            borderRight: '1px solid #D4CCC6',
+            py: { xs: 8, md: 0 },
+            borderRight: { xs: 'none', md: '1px solid #D4CCC6' },
+            borderBottom: { xs: '1px solid #D4CCC6', md: 'none' },
           }}
         >
           <Typography
@@ -98,7 +103,7 @@ const Home = () => {
             flex: 1,
             overflow: 'hidden',
             position: 'relative',
-            minHeight: { xs: 360, md: 'auto' },
+            minHeight: { xs: 320, md: 'auto' },
           }}
         >
           <img

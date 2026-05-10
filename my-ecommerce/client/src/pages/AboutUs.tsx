@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
 import { Container, Typography, Box, Divider, Grid } from '@mui/material';
 
 const AboutUs = () => {
+  useEffect(() => { document.title = 'About the Artist | Mijares Gallery'; }, []);
+
   return (
     <>
       {/* Hero */}

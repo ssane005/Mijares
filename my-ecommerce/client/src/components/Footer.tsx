@@ -19,22 +19,25 @@ const Footer = () => {
             Mijares Gallery
           </Typography>
           <Divider sx={{ width: 32, mx: 'auto', mb: 4, borderColor: '#8C4A2F' }} />
-          <MuiLink
-            component={Link}
-            to="/about"
-            sx={{
-              display: 'inline-block',
-              mb: 4,
-              fontSize: '0.7rem',
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: '#9E9189',
-              textDecoration: 'none',
-              '&:hover': { color: '#F8F4EE' },
-            }}
-          >
-            About Us
-          </MuiLink>
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 5, mb: 4 }}>
+            {[{ label: 'Collection', to: '/products' }, { label: 'About', to: '/about' }].map(({ label, to }) => (
+              <MuiLink
+                key={to}
+                component={Link}
+                to={to}
+                sx={{
+                  fontSize: '0.7rem',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: '#9E9189',
+                  textDecoration: 'none',
+                  '&:hover': { color: '#F8F4EE' },
+                }}
+              >
+                {label}
+              </MuiLink>
+            ))}
+          </Box>
           <Typography
             variant="body2"
             sx={{ fontSize: '0.7rem', letterSpacing: '0.08em', color: '#9E9189' }}

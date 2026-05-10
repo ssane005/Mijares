@@ -103,11 +103,10 @@ const Home = () => {
             minHeight: { xs: 360, md: 'auto' },
           }}
         >
-          <Box
-            component="img"
+          <img
             src={`${BASE}/6314_1.jpg`}
             alt="Havana Lady in the Balcony — Jose Maria Mijares"
-            sx={{
+            style={{
               width: '100%',
               height: '100%',
               objectFit: 'cover',
@@ -140,30 +139,25 @@ const Home = () => {
           <Grid container spacing={6}>
             {featuredWorks.map((work) => (
               <Grid item xs={12} sm={6} md={3} key={work.id}>
-                <Box
-                  component={Link}
-                  to="/products"
-                  sx={{ textDecoration: 'none', display: 'block' }}
-                >
+                <Link to="/products" style={{ textDecoration: 'none', display: 'block' }}>
                   <Box
                     sx={{
                       overflow: 'hidden',
                       mb: 2.5,
                       backgroundColor: '#EDE8E1',
                       aspectRatio: '4/5',
+                      '&:hover img': { transform: 'scale(1.03)' },
                     }}
                   >
-                    <Box
-                      component="img"
+                    <img
                       src={`${BASE}/${work.id}_1.jpg`}
                       alt={`${work.title} — Jose Maria Mijares`}
-                      sx={{
+                      style={{
                         width: '100%',
                         height: '100%',
                         objectFit: 'cover',
                         display: 'block',
                         transition: 'transform 0.6s ease',
-                        '&:hover': { transform: 'scale(1.03)' },
                       }}
                     />
                   </Box>
@@ -185,7 +179,7 @@ const Home = () => {
                   >
                     {work.year} · {work.medium}
                   </Typography>
-                </Box>
+                </Link>
               </Grid>
             ))}
           </Grid>

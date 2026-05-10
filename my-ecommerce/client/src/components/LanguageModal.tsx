@@ -30,12 +30,6 @@ const LanguageModal = () => {
           textAlign: 'center',
         }}
       >
-        {/* Flag row */}
-        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 4, fontSize: '2.5rem' }}>
-          <span>🇺🇸</span>
-          <span>🇨🇺</span>
-        </Box>
-
         <Typography
           sx={{
             fontFamily: '"Cormorant Garamond", serif',
@@ -56,32 +50,34 @@ const LanguageModal = () => {
           {t('language.modalSubtitle')}
         </Typography>
 
-        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3 }}>
           <Button
-            variant="outlined"
             onClick={() => select('en')}
             sx={{
-              flex: 1,
-              py: 1.5,
-              fontSize: '0.75rem',
-              letterSpacing: '0.15em',
-              borderColor: '#1A140C',
+              fontFamily: '"Cormorant Garamond", serif',
+              fontSize: '1.3rem',
+              fontWeight: 400,
+              letterSpacing: '0.08em',
               color: '#1A140C',
-              '&:hover': { borderColor: '#8C4A2F', color: '#8C4A2F', backgroundColor: 'transparent' },
+              p: 0,
+              minWidth: 'auto',
+              '&:hover': { color: '#8C4A2F', backgroundColor: 'transparent' },
             }}
           >
             {t('language.english')}
           </Button>
+          <Typography sx={{ color: '#D4CCC6', fontSize: '1rem' }}>·</Typography>
           <Button
-            variant="contained"
             onClick={() => select('es')}
             sx={{
-              flex: 1,
-              py: 1.5,
-              fontSize: '0.75rem',
-              letterSpacing: '0.15em',
-              backgroundColor: '#1A140C',
-              '&:hover': { backgroundColor: '#8C4A2F' },
+              fontFamily: '"Cormorant Garamond", serif',
+              fontSize: '1.3rem',
+              fontWeight: 400,
+              letterSpacing: '0.08em',
+              color: '#1A140C',
+              p: 0,
+              minWidth: 'auto',
+              '&:hover': { color: '#8C4A2F', backgroundColor: 'transparent' },
             }}
           >
             {t('language.spanish')}

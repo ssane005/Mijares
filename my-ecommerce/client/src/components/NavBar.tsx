@@ -14,107 +14,56 @@ const NavBar = () => {
     navigate('/');
   };
 
+  const navLinkSx = {
+    fontSize: '0.7rem',
+    letterSpacing: '0.18em',
+    color: '#1A140C',
+    '&:hover': { backgroundColor: 'transparent', color: '#8C4A2F' },
+  };
+
   return (
-    <AppBar position="static">
+    <AppBar position="static" elevation={0}>
       <Container maxWidth="lg">
-        <Toolbar sx={{ justifyContent: 'space-between', py: 2 }}>
+        <Toolbar sx={{ justifyContent: 'space-between', py: 2.5 }}>
           <Typography
-            variant="h4"
+            variant="h5"
             component={Link}
             to="/"
             sx={{
               textDecoration: 'none',
-              color: '#ffffff',
+              color: '#1A140C',
               fontFamily: '"Cormorant Garamond", serif',
-              fontWeight: 600,
-              letterSpacing: '0.05em',
+              fontWeight: 400,
+              letterSpacing: '0.08em',
             }}
           >
             Mijares Gallery
           </Typography>
 
           <Box sx={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-            <Button
-              color="inherit"
-              component={Link}
-              to="/products"
-              sx={{
-                fontSize: '0.75rem',
-                letterSpacing: '0.15em',
-                color: '#C6D1D8',
-                '&:hover': { backgroundColor: 'transparent', color: '#ffffff' }
-              }}
-            >
+            <Button component={Link} to="/products" sx={navLinkSx}>
               Collection
             </Button>
-            <Button
-              color="inherit"
-              component={Link}
-              to="/about"
-              sx={{
-                fontSize: '0.75rem',
-                letterSpacing: '0.15em',
-                color: '#C6D1D8',
-                '&:hover': { backgroundColor: 'transparent', color: '#ffffff' }
-              }}
-            >
+            <Button component={Link} to="/about" sx={navLinkSx}>
               About
             </Button>
 
             {user ? (
               <>
-                <Button
-                  color="inherit"
-                  component={Link}
-                  to="/cart"
-                  sx={{
-                    minWidth: 'auto',
-                    color: '#C6D1D8',
-                    '&:hover': { backgroundColor: 'transparent', color: '#ffffff' }
-                  }}
-                >
+                <Button component={Link} to="/cart" sx={{ ...navLinkSx, minWidth: 'auto' }}>
                   <Badge badgeContent={itemCount} color="error" sx={{ '& .MuiBadge-badge': { fontSize: '0.65rem' } }}>
-                    <ShoppingCart sx={{ fontSize: 20 }} />
+                    <ShoppingCart sx={{ fontSize: 18 }} />
                   </Badge>
                 </Button>
-                <Button
-                  color="inherit"
-                  component={Link}
-                  to="/orders"
-                  sx={{
-                    fontSize: '0.75rem',
-                    letterSpacing: '0.15em',
-                    color: '#C6D1D8',
-                    '&:hover': { backgroundColor: 'transparent', color: '#ffffff' }
-                  }}
-                >
+                <Button component={Link} to="/orders" sx={navLinkSx}>
                   Orders
                 </Button>
-                <Button
-                  color="inherit"
-                  onClick={handleLogout}
-                  sx={{
-                    fontSize: '0.75rem',
-                    letterSpacing: '0.15em',
-                    color: '#C6D1D8',
-                    '&:hover': { backgroundColor: 'transparent', color: '#ffffff' }
-                  }}
-                >
+                <Button onClick={handleLogout} sx={navLinkSx}>
                   Logout
                 </Button>
               </>
             ) : (
-              <Button
-                color="inherit"
-                component={Link}
-                to="/login"
-                sx={{
-                  fontSize: '0.75rem',
-                  letterSpacing: '0.15em',
-                  color: '#C6D1D8',
-                  '&:hover': { backgroundColor: 'transparent', color: '#ffffff' }
-                }}
-              >
+              <Button component={Link} to="/login" sx={navLinkSx}>
                 Sign In
               </Button>
             )}

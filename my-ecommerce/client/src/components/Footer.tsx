@@ -3,40 +3,41 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <Box component="footer" sx={{ mt: 'auto', backgroundColor: '#213D57' }}>
+    <Box component="footer" sx={{ mt: 'auto', backgroundColor: '#1A140C' }}>
       <Container maxWidth="lg">
-        <Box sx={{ py: 6, textAlign: 'center' }}>
+        <Box sx={{ py: 8, textAlign: 'center' }}>
           <Typography
             variant="h5"
             sx={{
               fontFamily: '"Cormorant Garamond", serif',
-              fontWeight: 500,
-              letterSpacing: '0.05em',
+              fontWeight: 400,
+              letterSpacing: '0.08em',
               mb: 2,
-              color: '#ffffff',
+              color: '#F8F4EE',
             }}
           >
             Mijares Gallery
           </Typography>
-          <Divider sx={{ width: 40, mx: 'auto', mb: 3, borderColor: '#C6D1D8' }} />
+          <Divider sx={{ width: 32, mx: 'auto', mb: 4, borderColor: '#8C4A2F' }} />
           <MuiLink
             component={Link}
             to="/about"
             sx={{
               display: 'inline-block',
-              mb: 3,
-              fontSize: '0.8rem',
-              letterSpacing: '0.15em',
-              color: '#C6D1D8',
+              mb: 4,
+              fontSize: '0.7rem',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#9E9189',
               textDecoration: 'none',
-              '&:hover': { color: '#ffffff' },
+              '&:hover': { color: '#F8F4EE' },
             }}
           >
             About Us
           </MuiLink>
           <Typography
             variant="body2"
-            sx={{ fontSize: '0.8rem', letterSpacing: '0.05em', color: '#C6D1D8' }}
+            sx={{ fontSize: '0.7rem', letterSpacing: '0.08em', color: '#9E9189' }}
           >
             {new Date().getFullYear()} Mijares Gallery. All rights reserved.
           </Typography>

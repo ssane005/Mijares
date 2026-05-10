@@ -1,131 +1,244 @@
-import { useState, useEffect } from 'react';
-import { Container, Typography, Box, Button, Divider } from '@mui/material';
+import { Container, Typography, Box, Button, Divider, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
-import ProductGrid from '../components/ProductGrid';
-import { getProducts } from '../services/api';
-import type { Product } from '../types';
+
+const BASE = 'https://secure.cernudaarte.com/uploads/paintings/large';
+
+const featuredWorks = [
+  { id: '6314', title: 'Havana Lady in the Balcony', year: 'c. 1980', medium: 'Oil on canvas' },
+  { id: '2095', title: 'Woman with Flower', year: 'c. 1975', medium: 'Oil on canvas' },
+  { id: '7746', title: 'Three Faces', year: 'c. 1985', medium: 'Oil on canvas' },
+  { id: '6898', title: 'Imaginary Landscape', year: 'c. 1970', medium: 'Oil on canvas' },
+];
 
 const Home = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getProducts()
-      .then((data) => setProducts(data.slice(0, 4)))
-      .finally(() => setLoading(false));
-  }, []);
-
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero — split layout */}
       <Box
         sx={{
-          py: { xs: 8, md: 12 },
-          textAlign: 'center',
-          backgroundColor: '#334C64',
+          backgroundColor: '#F8F4EE',
+          borderBottom: '1px solid #D4CCC6',
+          minHeight: { xs: 'auto', md: '85vh' },
+          display: 'flex',
+          alignItems: 'stretch',
         }}
       >
-        <Container maxWidth="md">
+        {/* Text side */}
+        <Box
+          sx={{
+            flex: '0 0 42%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            px: { xs: 4, md: 10 },
+            py: { xs: 10, md: 0 },
+            borderRight: '1px solid #D4CCC6',
+          }}
+        >
           <Typography
-            variant="h2"
-            component="h1"
+            variant="overline"
+            sx={{
+              display: 'block',
+              letterSpacing: '0.25em',
+              fontSize: '0.65rem',
+              color: '#8C4A2F',
+              mb: 4,
+            }}
+          >
+            Coral Gables · Est. 2002
+          </Typography>
+          <Typography
             sx={{
               fontFamily: '"Cormorant Garamond", serif',
-              fontWeight: 400,
-              fontSize: { xs: '2.5rem', md: '3.5rem' },
-              letterSpacing: '0.04em',
-              mb: 3,
-              color: '#ffffff',
+              fontWeight: 300,
+              fontSize: { xs: '2.8rem', md: '4.2rem' },
+              letterSpacing: '0.03em',
+              lineHeight: 1.08,
+              color: '#1A140C',
+              mb: 5,
             }}
           >
-            Curated Fine Art
+            Jose Maria<br />Mijares
           </Typography>
           <Typography
-            variant="body1"
             sx={{
-              maxWidth: 500,
-              mx: 'auto',
-              mb: 5,
-              fontSize: '1.05rem',
-              lineHeight: 1.9,
-              color: '#C6D1D8',
+              fontFamily: '"Cormorant Garamond", serif',
+              fontStyle: 'italic',
+              fontSize: '1.1rem',
+              lineHeight: 1.8,
+              color: '#9E9189',
+              mb: 8,
+              maxWidth: 340,
             }}
           >
-            Discover exceptional original paintings and limited edition prints
-            from established and emerging artists.
+            Original paintings, certified prints, and works on object — from one of
+            Cuba's most important modern painters.
           </Typography>
-          <Button
-            variant="outlined"
-            size="large"
-            component={Link}
-            to="/products"
+          <Box>
+            <Button variant="contained" component={Link} to="/products" sx={{ mr: 3 }}>
+              View the Collection
+            </Button>
+            <Button
+              variant="text"
+              component={Link}
+              to="/about"
+              sx={{
+                fontSize: '0.7rem',
+                letterSpacing: '0.15em',
+                color: '#9E9189',
+                '&:hover': { color: '#1A140C', backgroundColor: 'transparent' },
+              }}
+            >
+              About the Artist
+            </Button>
+          </Box>
+        </Box>
+
+        {/* Hero painting */}
+        <Box
+          sx={{
+            flex: 1,
+            overflow: 'hidden',
+            position: 'relative',
+            minHeight: { xs: 360, md: 'auto' },
+          }}
+        >
+          <Box
+            component="img"
+            src={`${BASE}/6314_1.jpg`}
+            alt="Havana Lady in the Balcony — Jose Maria Mijares"
             sx={{
-              px: 5,
-              py: 1.5,
-              borderColor: '#ffffff',
-              color: '#ffffff',
-              '&:hover': {
-                borderColor: '#C6D1D8',
-                color: '#C6D1D8',
-                backgroundColor: 'transparent',
-              },
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center top',
+              display: 'block',
             }}
-          >
-            View Collection
-          </Button>
-        </Container>
+          />
+        </Box>
       </Box>
 
-      {/* Featured Works Section */}
-      <Box sx={{ backgroundColor: '#C6D1D8', py: { xs: 6, md: 10 } }}>
+      {/* Selected Works */}
+      <Box sx={{ backgroundColor: '#F8F4EE', py: { xs: 10, md: 16 } }}>
         <Container maxWidth="lg">
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <Box sx={{ textAlign: 'center', mb: 10 }}>
             <Typography
               variant="overline"
               sx={{
-                letterSpacing: '0.2em',
-                color: '#475F76',
-                fontSize: '0.75rem',
+                display: 'block',
+                letterSpacing: '0.25em',
+                fontSize: '0.68rem',
+                color: '#9E9189',
+                mb: 2,
               }}
             >
               Selected Works
             </Typography>
-            <Divider
-              sx={{
-                width: 60,
-                mx: 'auto',
-                mt: 2,
-                borderColor: '#213D57',
-              }}
-            />
+            <Divider sx={{ width: 32, mx: 'auto', borderColor: '#8C4A2F' }} />
           </Box>
 
-          {loading ? (
-            <Typography textAlign="center" color="text.secondary">
-              Loading...
-            </Typography>
-          ) : (
-            <ProductGrid products={products} />
-          )}
+          <Grid container spacing={6}>
+            {featuredWorks.map((work) => (
+              <Grid item xs={12} sm={6} md={3} key={work.id}>
+                <Box
+                  component={Link}
+                  to="/products"
+                  sx={{ textDecoration: 'none', display: 'block' }}
+                >
+                  <Box
+                    sx={{
+                      overflow: 'hidden',
+                      mb: 2.5,
+                      backgroundColor: '#EDE8E1',
+                      aspectRatio: '4/5',
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={`${BASE}/${work.id}_1.jpg`}
+                      alt={`${work.title} — Jose Maria Mijares`}
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        display: 'block',
+                        transition: 'transform 0.6s ease',
+                        '&:hover': { transform: 'scale(1.03)' },
+                      }}
+                    />
+                  </Box>
+                  <Typography
+                    sx={{
+                      fontFamily: '"Cormorant Garamond", serif',
+                      fontSize: '1.05rem',
+                      fontWeight: 400,
+                      color: '#1A140C',
+                      letterSpacing: '0.02em',
+                      mb: 0.5,
+                    }}
+                  >
+                    {work.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{ fontSize: '0.75rem', color: '#9E9189', letterSpacing: '0.05em' }}
+                  >
+                    {work.year} · {work.medium}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
 
-          <Box sx={{ textAlign: 'center', mt: 8 }}>
+          <Box sx={{ textAlign: 'center', mt: 12 }}>
             <Button
               variant="text"
               component={Link}
               to="/products"
               sx={{
-                color: '#213D57',
-                fontSize: '0.8rem',
-                letterSpacing: '0.15em',
-                '&:hover': {
-                  color: '#475F76',
-                  backgroundColor: 'transparent',
-                },
+                fontSize: '0.7rem',
+                letterSpacing: '0.2em',
+                color: '#1A140C',
+                '&:hover': { color: '#8C4A2F', backgroundColor: 'transparent' },
               }}
             >
               View All Works
             </Button>
           </Box>
+        </Container>
+      </Box>
+
+      {/* Quote band */}
+      <Box sx={{ backgroundColor: '#1A140C', py: { xs: 10, md: 14 } }}>
+        <Container maxWidth="sm">
+          <Typography
+            sx={{
+              fontFamily: '"Cormorant Garamond", serif',
+              fontWeight: 300,
+              fontSize: { xs: '1.6rem', md: '2.1rem' },
+              lineHeight: 1.65,
+              letterSpacing: '0.03em',
+              color: '#F8F4EE',
+              textAlign: 'center',
+              fontStyle: 'italic',
+            }}
+          >
+            "His work fuses constructivism and biomorphic surrealism with baroque elements
+            from colonial Caribbean design."
+          </Typography>
+          <Typography
+            variant="overline"
+            sx={{
+              display: 'block',
+              textAlign: 'center',
+              mt: 4,
+              letterSpacing: '0.2em',
+              fontSize: '0.65rem',
+              color: '#8C4A2F',
+            }}
+          >
+            — Florida International University, 2001
+          </Typography>
         </Container>
       </Box>
     </>

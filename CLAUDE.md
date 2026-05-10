@@ -37,7 +37,7 @@ The family sells three categories of product:
 
 1. **Original paintings** — authenticated works from Mijares' estate; the highest-value offerings
 2. **Certified prints** — limited edition reproductions with certificates of authenticity
-3. **Art-on-product** — an emerging line applying his artwork to physical goods such as glass pieces, bowls, and decorative objects; a newer revenue stream that broadens accessibility
+3. **Art-on-product** — an emerging line applying his artwork to physical goods such as decorative ceramic plates; a newer revenue stream that broadens accessibility
 
 All sales have historically been done **in person** — through art fairs, gallery relationships, direct collector outreach, and word of mouth. This site is the first step toward an online sales channel.
 
@@ -60,6 +60,8 @@ The site should feel like a **curated fine art gallery** — not a generic e-com
 - Avoid promotional clichés ("shop now", "limited time", "don't miss out")
 - Copy should reflect the **story** behind the work: Cuban heritage, exile, artistic evolution, family legacy
 - The family is still present — this is not a posthumous archive; it is a living business run by people who knew him
+- Site is bilingual (English / Spanish) — the Cuban family connection makes Spanish support meaningful and appropriate
+- Avoid Cuban flag imagery — Mijares was a Cuban exile who left following Castro's rise; the flag carries complicated associations for this family
 
 ---
 
@@ -69,34 +71,77 @@ The site should feel like a **curated fine art gallery** — not a generic e-com
 |---|---|
 | Frontend | React 18, TypeScript, Vite, Material-UI |
 | State | React Context (Auth, Cart) |
-| Routing | React Router v6 |
+| Routing | React Router v6 (basename `/Mijares` for GitHub Pages) |
+| i18n | i18next + react-i18next (EN/ES) |
 | Backend | Express, Node.js, TypeScript |
 | Database | PostgreSQL |
 | Auth | JWT (7-day tokens, bcryptjs) |
 | Build | Vite (client, port 5173) / tsx (server, port 3001) |
+| Hosting | GitHub Pages (static frontend only via Actions workflow) |
 
 **Key paths:**
 - Client: `my-ecommerce/client/src/`
 - Server: `my-ecommerce/server/src/`
+- Translations: `my-ecommerce/client/src/i18n/` (en.ts, es.ts)
+- Product images: `my-ecommerce/client/public/images/`
 - API proxy: `/api` → `localhost:3001`
+
+**GitHub Pages notes:**
+- Deployed via `.github/workflows/deploy.yml` on every push to `main`
+- Vite base is `/Mijares/` — all asset and image paths must include this prefix
+- `BrowserRouter` uses `basename="/Mijares"`
+- `404.html` handles React Router deep-link redirects on GitHub Pages
+- Live URL: `https://ssane005.github.io/Mijares/`
 
 ---
 
 ## Design Principles
 
-- Color palette: deep navy `#213D57`, slate gray `#475F76`, light gray background `#C6D1D8`
-- Typography: **Cormorant Garamond** (headings) + **Montserrat** (body)
+- **Color palette:** warm linen `#F8F4EE` (background), near-black `#1A140C` (text), sienna `#8C4A2F` (accent), warm gray `#9E9189` (secondary text)
+- **Typography:** **Cormorant Garamond** (headings, display, italic captions) + **DM Sans** (body, UI) — Cormorant at light weights (300–400) with generous letter-spacing
 - Zero border-radius throughout — sharp edges reinforce the gallery aesthetic
 - Artwork images should dominate; UI should recede
-- Art terminology preferred: "Collection" not "Shop", "Add to Collection" not "Add to Cart", "Work" not "Product"
+- Art terminology preferred: "Collection" not "Shop", "Inquire" not "Buy Now", "Works" not "Products"
+- Sienna appears as hover/accent state — never as a dominant block color
+- Dark near-black `#1A140C` sections used sparingly for quote bands, footer, and dramatic emphasis
+
+---
+
+## Current State of the Site
+
+### Pages Built
+- **Home** — split hero (Havana Lady painting / artist intro text), featured works grid (4 plates), pull quote band, footer
+- **Collection (`/products`)** — all 5 plates with market-estimated prices, medium, dimensions, and per-piece mailto inquiry buttons
+- **About (`/about`)** — full Mijares biography (real content), real studio photo of Mijares at work, gallery mission statement
+
+### Features Implemented
+- English / Spanish language toggle (i18next) with first-visit selection modal and navbar toggle
+- Mobile hamburger menu (drawer) — hamburger icon | language toggle on mobile; full nav on desktop
+- GitHub Pages deployment via GitHub Actions (auto-deploys on push to `main`)
+- MG monogram favicon
+
+### Current Product Images (in `public/images/`)
+All are ceramic plates with Mijares artwork — photographed by Sam's mom. Better photos needed.
+
+| Filename | Estimated Price | Notes |
+|---|---|---|
+| `plate-cream-girl-with-rose.jpg` | $1,100 | Figurative, warm tones — used as hero on homepage |
+| `plate-harbor-geometric.jpg` | $1,200 | Has visible styrofoam in photo — needs retake |
+| `plate-blue-abstract-figures.jpg` | $950 | Vibrant blue, signed 1972 |
+| `plate-blue-geometric-figure.jpg` | $900 | Strong geometric abstraction |
+| `plate-mauve-biomorphic.jpg` | $850 | Deep mauve/rust tones |
+| `mijares.jpg` | — | Real photo of Mijares at work in his Miami studio — used on About page |
+
+Prices are **market estimates based on auction comparables** ($600–$1,000 secondary market + gallery premium). Not confirmed by Sam's mom.
 
 ---
 
 ## Known Gaps to Address
 
-- Database seed data is currently placeholder tech products — needs real Mijares artworks
-- Product categories (originals / prints / art-on-product) are not yet represented in the schema
+- Backend/database not connected on GitHub Pages — all product data is currently hardcoded in the frontend
 - No image management or upload workflow exists yet
+- Product categories (originals / prints / art-on-product) not yet represented in the DB schema
+- About page self-portrait image still sourced from Cernuda Arte (third-party) — should be replaced with family-owned image
 
 ---
 
@@ -114,8 +159,12 @@ The site should feel like a **curated fine art gallery** — not a generic e-com
 - [ ] Clarify whether plates are one-of-a-kind originals or if multiples exist — affects how availability is presented
 - [ ] Decide if shipping is offered or local pickup only — needs to be communicated on the site
 
+### Photography
+- [ ] Retake photo of harbor geometric plate — visible styrofoam packaging in current shot
+- [ ] Better photos of all plates — currently shot in home setting; professional or better-lit shots will significantly improve presentation
+- [ ] More product photos — only 5 plates currently; are there additional pieces (originals, prints) to add?
+
 ### Content Still Needed from Sam/Sam's Mom
-- [ ] More product photos — currently only 5 plates; are there additional pieces (originals, prints) to add?
 - [ ] Correct titles and dates for each plate if known
 - [ ] Any certificates of authenticity or provenance documentation to reference on product pages
-- [ ] A photo of Mijares himself (or the family) for the About page — currently using a self-portrait painting as placeholder
+- [ ] Confirmation or correction of the market-estimated prices

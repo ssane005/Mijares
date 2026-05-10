@@ -1,13 +1,11 @@
 import { Container, Typography, Box, Button, Divider, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const BASE = 'https://secure.cernudaarte.com/uploads/paintings/large';
-
 const featuredWorks = [
-  { id: '6314', title: 'Havana Lady in the Balcony', year: 'c. 1980', medium: 'Oil on canvas' },
-  { id: '2095', title: 'Woman with Flower', year: 'c. 1975', medium: 'Oil on canvas' },
-  { id: '7746', title: 'Three Faces', year: 'c. 1985', medium: 'Oil on canvas' },
-  { id: '6898', title: 'Imaginary Landscape', year: 'c. 1970', medium: 'Oil on canvas' },
+  { image: '/Mijares/images/plate-harbor-geometric.jpg', title: 'Harbor — Geometric Composition', detail: '$1,200 · Ceramic plate' },
+  { image: '/Mijares/images/plate-cream-girl-with-rose.jpg', title: 'Girl with Rose', detail: '$1,100 · Ceramic plate' },
+  { image: '/Mijares/images/plate-blue-abstract-figures.jpg', title: 'Abstract Figures in Blue', detail: '$950 · Ceramic plate' },
+  { image: '/Mijares/images/plate-blue-geometric-figure.jpg', title: 'Geometric Figure in Blue', detail: '$900 · Ceramic plate' },
 ];
 
 const Home = () => {
@@ -104,14 +102,15 @@ const Home = () => {
           }}
         >
           <img
-            src={`${BASE}/6314_1.jpg`}
-            alt="Havana Lady in the Balcony — Jose Maria Mijares"
+            src="/Mijares/images/plate-harbor-geometric.jpg"
+            alt="Harbor — Geometric Composition — Jose Maria Mijares"
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center top',
+              objectFit: 'contain',
               display: 'block',
+              padding: '40px',
+              backgroundColor: '#EFEBE4',
             }}
           />
         </Box>
@@ -138,24 +137,28 @@ const Home = () => {
 
           <Grid container spacing={6}>
             {featuredWorks.map((work) => (
-              <Grid item xs={12} sm={6} md={3} key={work.id}>
+              <Grid item xs={12} sm={6} md={3} key={work.image}>
                 <Link to="/products" style={{ textDecoration: 'none', display: 'block' }}>
                   <Box
                     sx={{
-                      overflow: 'hidden',
                       mb: 2.5,
-                      backgroundColor: '#EDE8E1',
-                      aspectRatio: '4/5',
-                      '&:hover img': { transform: 'scale(1.03)' },
+                      backgroundColor: '#EFEBE4',
+                      aspectRatio: '1/1',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      p: 2,
+                      overflow: 'hidden',
+                      '&:hover img': { transform: 'scale(1.04)' },
                     }}
                   >
                     <img
-                      src={`${BASE}/${work.id}_1.jpg`}
+                      src={work.image}
                       alt={`${work.title} — Jose Maria Mijares`}
                       style={{
                         width: '100%',
                         height: '100%',
-                        objectFit: 'cover',
+                        objectFit: 'contain',
                         display: 'block',
                         transition: 'transform 0.6s ease',
                       }}
@@ -177,7 +180,7 @@ const Home = () => {
                     variant="body2"
                     sx={{ fontSize: '0.75rem', color: '#9E9189', letterSpacing: '0.05em' }}
                   >
-                    {work.year} · {work.medium}
+                    {work.detail}
                   </Typography>
                 </Link>
               </Grid>

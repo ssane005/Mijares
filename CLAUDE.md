@@ -95,7 +95,27 @@ The site should feel like a **curated fine art gallery** — not a generic e-com
 ## Known Gaps to Address
 
 - Database seed data is currently placeholder tech products — needs real Mijares artworks
-- About page needs real biographical content reflecting Mijares' actual history
 - Product categories (originals / prints / art-on-product) are not yet represented in the schema
 - No image management or upload workflow exists yet
-- No inquiry/contact flow for high-value original sales (buyers of originals may want to talk before purchasing)
+
+---
+
+## Open Action Items
+
+### Email & Inquiry Flow
+- [ ] Confirm the gallery contact email (currently placeholder `info@mijaresgallery.com`) — should this be Sam's personal email, a dedicated gallery address, or forwarded somewhere?
+- [ ] Decide on inquiry workflow: does Sam's mom receive emails directly and reply manually, or does someone else manage incoming inquiries?
+- [ ] Consider whether a contact form (vs. raw mailto link) is needed to reduce spam and keep a paper trail
+
+### Sales & Inventory Workflow
+- [ ] Confirm pricing on all 5 plates before going public — current prices are market estimates ($850–$1,200), not confirmed by Sam's mom
+- [ ] Decide how "sold" items are handled — removed from site immediately, marked as sold, or left up as archive?
+- [ ] Determine who is responsible for updating inventory when a piece sells (Sam, Sam's mom, or Josh via code)
+- [ ] Clarify whether plates are one-of-a-kind originals or if multiples exist — affects how availability is presented
+- [ ] Decide if shipping is offered or local pickup only — needs to be communicated on the site
+
+### Content Still Needed from Sam/Sam's Mom
+- [ ] More product photos — currently only 5 plates; are there additional pieces (originals, prints) to add?
+- [ ] Correct titles and dates for each plate if known
+- [ ] Any certificates of authenticity or provenance documentation to reference on product pages
+- [ ] A photo of Mijares himself (or the family) for the About page — currently using a self-portrait painting as placeholder

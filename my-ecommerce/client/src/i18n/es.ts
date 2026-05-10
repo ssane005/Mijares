@@ -54,7 +54,7 @@ const es = {
   },
   language: {
     modalTitle: 'Elige tu idioma',
-    modalSubtitle: 'Puedes cambiarlo en cualquier momento desde la barra de navegación.',
+    modalSubtitle: 'Puedes cambiarlo en cualquier momento desde el menú.',
     english: 'English',
     spanish: 'Español',
   },

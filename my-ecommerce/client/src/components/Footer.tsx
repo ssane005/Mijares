@@ -1,7 +1,10 @@
 import { Box, Container, Typography, Divider, Link as MuiLink } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <Box component="footer" sx={{ mt: 'auto', backgroundColor: '#1A140C' }}>
       <Container maxWidth="lg">
@@ -20,7 +23,7 @@ const Footer = () => {
           </Typography>
           <Divider sx={{ width: 32, mx: 'auto', mb: 4, borderColor: '#8C4A2F' }} />
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 5, mb: 4 }}>
-            {[{ label: 'Collection', to: '/products' }, { label: 'About', to: '/about' }].map(({ label, to }) => (
+            {([['collection', '/products'], ['about', '/about']] as const).map(([key, to]) => (
               <MuiLink
                 key={to}
                 component={Link}
@@ -34,7 +37,7 @@ const Footer = () => {
                   '&:hover': { color: '#F8F4EE' },
                 }}
               >
-                {label}
+                {t(`footer.${key}`)}
               </MuiLink>
             ))}
           </Box>
@@ -42,7 +45,7 @@ const Footer = () => {
             variant="body2"
             sx={{ fontSize: '0.7rem', letterSpacing: '0.08em', color: '#9E9189' }}
           >
-            {new Date().getFullYear()} Mijares Gallery. All rights reserved.
+            {new Date().getFullYear()} {t('footer.rights')}
           </Typography>
         </Box>
       </Container>

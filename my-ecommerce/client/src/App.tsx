@@ -6,6 +6,7 @@ import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import LanguageModal from './components/LanguageModal';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails';
@@ -25,6 +26,7 @@ function App() {
         <AuthProvider>
           <CartProvider>
           <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <LanguageModal />
             <NavBar />
             <Box component="main" sx={{ flexGrow: 1 }}>
               <Routes>

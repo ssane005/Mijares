@@ -1,53 +1,21 @@
 import { useEffect } from 'react';
 import { Container, Typography, Box, Divider, Grid, Button } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const plates = [
-  {
-    id: 'plate-harbor-geometric',
-    title: 'Harbor — Geometric Composition',
-    image: '/Mijares/images/plate-harbor-geometric.jpg',
-    price: 1200,
-    medium: 'Mixed media on ceramic plate',
-    dimensions: 'Approx. 14" diameter',
-  },
-  {
-    id: 'plate-cream-girl-with-rose',
-    title: 'Girl with Rose',
-    image: '/Mijares/images/plate-cream-girl-with-rose.jpg',
-    price: 1100,
-    medium: 'Mixed media on ceramic plate',
-    dimensions: 'Approx. 14" diameter',
-  },
-  {
-    id: 'plate-blue-abstract-figures',
-    title: 'Abstract Figures in Blue',
-    image: '/Mijares/images/plate-blue-abstract-figures.jpg',
-    price: 950,
-    medium: 'Mixed media on ceramic plate',
-    dimensions: 'Approx. 14" diameter',
-  },
-  {
-    id: 'plate-blue-geometric-figure',
-    title: 'Geometric Figure in Blue',
-    image: '/Mijares/images/plate-blue-geometric-figure.jpg',
-    price: 900,
-    medium: 'Mixed media on ceramic plate',
-    dimensions: 'Approx. 14" diameter',
-  },
-  {
-    id: 'plate-mauve-biomorphic',
-    title: 'Biomorphic Forms — Mauve',
-    image: '/Mijares/images/plate-mauve-biomorphic.jpg',
-    price: 850,
-    medium: 'Mixed media on ceramic plate',
-    dimensions: 'Approx. 14" diameter',
-  },
+  { id: 'plate-harbor-geometric', title: 'Harbor — Geometric Composition', image: '/Mijares/images/plate-harbor-geometric.jpg', price: 1200 },
+  { id: 'plate-cream-girl-with-rose', title: 'Girl with Rose', image: '/Mijares/images/plate-cream-girl-with-rose.jpg', price: 1100 },
+  { id: 'plate-blue-abstract-figures', title: 'Abstract Figures in Blue', image: '/Mijares/images/plate-blue-abstract-figures.jpg', price: 950 },
+  { id: 'plate-blue-geometric-figure', title: 'Geometric Figure in Blue', image: '/Mijares/images/plate-blue-geometric-figure.jpg', price: 900 },
+  { id: 'plate-mauve-biomorphic', title: 'Biomorphic Forms — Mauve', image: '/Mijares/images/plate-mauve-biomorphic.jpg', price: 850 },
 ];
 
 const inquiryEmail = 'info@mijaresgallery.com';
 
 const Products = () => {
-  useEffect(() => { document.title = 'The Collection | Mijares Gallery'; }, []);
+  const { t } = useTranslation();
+
+  useEffect(() => { document.title = `${t('products.heading')} | Mijares Gallery`; });
 
   return (
     <Box sx={{ backgroundColor: '#F8F4EE', minHeight: '100%' }}>
@@ -59,7 +27,7 @@ const Products = () => {
             variant="overline"
             sx={{ display: 'block', letterSpacing: '0.25em', fontSize: '0.65rem', color: '#8C4A2F', mb: 3 }}
           >
-            Works on Object
+            {t('products.category')}
           </Typography>
           <Typography
             variant="h2"
@@ -73,7 +41,7 @@ const Products = () => {
               mb: 3,
             }}
           >
-            The Collection
+            {t('products.heading')}
           </Typography>
           <Typography
             variant="body1"
@@ -87,8 +55,7 @@ const Products = () => {
               lineHeight: 1.8,
             }}
           >
-            Each piece is a signed original work by Jose Maria Mijares, applied to ceramic.
-            To inquire or purchase, contact us directly.
+            {t('products.subtitle')}
           </Typography>
           <Divider sx={{ width: 32, mx: 'auto', mt: 5, borderColor: '#8C4A2F' }} />
         </Container>
@@ -100,7 +67,6 @@ const Products = () => {
           {plates.map((plate) => (
             <Grid item xs={12} sm={6} md={4} key={plate.id}>
               <Box>
-                {/* Image */}
                 <Box
                   sx={{
                     backgroundColor: '#EFEBE4',
@@ -116,60 +82,33 @@ const Products = () => {
                   <img
                     src={plate.image}
                     alt={`${plate.title} — Jose Maria Mijares`}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'contain',
-                      display: 'block',
-                      transition: 'transform 0.5s ease',
-                    }}
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', transition: 'transform 0.5s ease' }}
                     onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
                     onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                   />
                 </Box>
 
-                {/* Info */}
                 <Typography
-                  sx={{
-                    fontFamily: '"Cormorant Garamond", serif',
-                    fontSize: '1.2rem',
-                    fontWeight: 400,
-                    color: '#1A140C',
-                    letterSpacing: '0.02em',
-                    mb: 0.5,
-                  }}
+                  sx={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.2rem', fontWeight: 400, color: '#1A140C', letterSpacing: '0.02em', mb: 0.5 }}
                 >
                   {plate.title}
                 </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{ fontSize: '0.75rem', color: '#9E9189', letterSpacing: '0.04em', mb: 0.5 }}
-                >
-                  {plate.medium}
+                <Typography variant="body2" sx={{ fontSize: '0.75rem', color: '#9E9189', letterSpacing: '0.04em', mb: 0.5 }}>
+                  {t('products.medium')}
                 </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{ fontSize: '0.75rem', color: '#9E9189', letterSpacing: '0.04em', mb: 3 }}
-                >
-                  {plate.dimensions}
+                <Typography variant="body2" sx={{ fontSize: '0.75rem', color: '#9E9189', letterSpacing: '0.04em', mb: 3 }}>
+                  {t('products.dimensions')}
                 </Typography>
 
-                {/* Price + CTA */}
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <Typography
-                    sx={{
-                      fontFamily: '"Cormorant Garamond", serif',
-                      fontSize: '1.4rem',
-                      fontWeight: 400,
-                      color: '#1A140C',
-                      letterSpacing: '0.02em',
-                    }}
+                    sx={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.4rem', fontWeight: 400, color: '#1A140C', letterSpacing: '0.02em' }}
                   >
                     ${plate.price.toLocaleString()}
                   </Typography>
                   <Button
                     variant="outlined"
-                    href={`mailto:${inquiryEmail}?subject=Inquiry: ${encodeURIComponent(plate.title)}&body=Hello,%0A%0AI am interested in "${plate.title}" (${plate.dimensions}).%0A%0APlease let me know about availability and next steps.%0A%0AThank you.`}
+                    href={`mailto:${inquiryEmail}?subject=Inquiry: ${encodeURIComponent(plate.title)}&body=Hello,%0A%0AI am interested in "${plate.title}" (${t('products.dimensions')}).%0A%0APlease let me know about availability and next steps.%0A%0AThank you.`}
                     sx={{
                       fontSize: '0.65rem',
                       letterSpacing: '0.18em',
@@ -180,7 +119,7 @@ const Products = () => {
                       '&:hover': { borderColor: '#8C4A2F', color: '#8C4A2F', backgroundColor: 'transparent' },
                     }}
                   >
-                    Inquire
+                    {t('products.inquire')}
                   </Button>
                 </Box>
                 <Box sx={{ mt: 2, borderBottom: '1px solid #D4CCC6' }} />
@@ -193,13 +132,8 @@ const Products = () => {
       {/* Bottom note */}
       <Box sx={{ backgroundColor: '#1A140C', py: { xs: 8, md: 10 } }}>
         <Container maxWidth="sm" sx={{ textAlign: 'center' }}>
-          <Typography
-            variant="body1"
-            sx={{ color: '#9E9189', lineHeight: 2, fontSize: '0.95rem', mb: 3 }}
-          >
-            All works are sold directly from the Mijares estate. Each piece is accompanied
-            by documentation of authenticity. Prices are subject to change — contact us
-            to confirm current availability.
+          <Typography variant="body1" sx={{ color: '#9E9189', lineHeight: 2, fontSize: '0.95rem', mb: 3 }}>
+            {t('products.disclaimer')}
           </Typography>
           <Button
             variant="outlined"
@@ -214,7 +148,7 @@ const Products = () => {
               '&:hover': { borderColor: '#8C4A2F', color: '#8C4A2F', backgroundColor: 'transparent' },
             }}
           >
-            Contact the Gallery
+            {t('products.contactGallery')}
           </Button>
         </Container>
       </Box>

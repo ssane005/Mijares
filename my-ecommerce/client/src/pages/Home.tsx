@@ -1,15 +1,18 @@
 import { useEffect } from 'react';
 import { Container, Typography, Box, Button, Divider, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const featuredWorks = [
-  { image: '/Mijares/images/plate-cream-girl-with-rose.jpg', title: 'Girl with Rose', detail: '$1,100 · Ceramic plate' },
-  { image: '/Mijares/images/plate-blue-abstract-figures.jpg', title: 'Abstract Figures in Blue', detail: '$950 · Ceramic plate' },
-  { image: '/Mijares/images/plate-blue-geometric-figure.jpg', title: 'Geometric Figure in Blue', detail: '$900 · Ceramic plate' },
-  { image: '/Mijares/images/plate-mauve-biomorphic.jpg', title: 'Biomorphic Forms — Mauve', detail: '$850 · Ceramic plate' },
+  { image: '/Mijares/images/plate-cream-girl-with-rose.jpg', titleKey: 'Girl with Rose', detail: '$1,100' },
+  { image: '/Mijares/images/plate-blue-abstract-figures.jpg', titleKey: 'Abstract Figures in Blue', detail: '$950' },
+  { image: '/Mijares/images/plate-blue-geometric-figure.jpg', titleKey: 'Geometric Figure in Blue', detail: '$900' },
+  { image: '/Mijares/images/plate-mauve-biomorphic.jpg', titleKey: 'Biomorphic Forms — Mauve', detail: '$850' },
 ];
 
 const Home = () => {
+  const { t } = useTranslation();
+
   useEffect(() => { document.title = 'Mijares Gallery'; }, []);
 
   return (
@@ -40,15 +43,9 @@ const Home = () => {
         >
           <Typography
             variant="overline"
-            sx={{
-              display: 'block',
-              letterSpacing: '0.25em',
-              fontSize: '0.65rem',
-              color: '#8C4A2F',
-              mb: 4,
-            }}
+            sx={{ display: 'block', letterSpacing: '0.25em', fontSize: '0.65rem', color: '#8C4A2F', mb: 4 }}
           >
-            Coral Gables · Est. 2002
+            {t('home.location')}
           </Typography>
           <Typography
             sx={{
@@ -74,12 +71,11 @@ const Home = () => {
               maxWidth: 340,
             }}
           >
-            Original paintings, certified prints, and works on object — from one of
-            Cuba's most important modern painters.
+            {t('home.heroSubtitle')}
           </Typography>
           <Box>
             <Button variant="contained" component={Link} to="/products" sx={{ mr: 3 }}>
-              View the Collection
+              {t('home.viewCollection')}
             </Button>
             <Button
               variant="text"
@@ -92,29 +88,17 @@ const Home = () => {
                 '&:hover': { color: '#1A140C', backgroundColor: 'transparent' },
               }}
             >
-              About the Artist
+              {t('home.aboutArtist')}
             </Button>
           </Box>
         </Box>
 
         {/* Hero painting */}
-        <Box
-          sx={{
-            flex: 1,
-            overflow: 'hidden',
-            minHeight: { xs: 380, md: 'auto' },
-          }}
-        >
+        <Box sx={{ flex: 1, overflow: 'hidden', minHeight: { xs: 380, md: 'auto' } }}>
           <img
             src="https://secure.cernudaarte.com/uploads/paintings/large/6314_1.jpg"
             alt="Havana Lady in the Balcony — Jose Maria Mijares"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center top',
-              display: 'block',
-            }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
           />
         </Box>
       </Box>
@@ -125,15 +109,9 @@ const Home = () => {
           <Box sx={{ textAlign: 'center', mb: 10 }}>
             <Typography
               variant="overline"
-              sx={{
-                display: 'block',
-                letterSpacing: '0.25em',
-                fontSize: '0.68rem',
-                color: '#9E9189',
-                mb: 2,
-              }}
+              sx={{ display: 'block', letterSpacing: '0.25em', fontSize: '0.68rem', color: '#9E9189', mb: 2 }}
             >
-              Selected Works
+              {t('home.selectedWorks')}
             </Typography>
             <Divider sx={{ width: 32, mx: 'auto', borderColor: '#8C4A2F' }} />
           </Box>
@@ -157,33 +135,17 @@ const Home = () => {
                   >
                     <img
                       src={work.image}
-                      alt={`${work.title} — Jose Maria Mijares`}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'contain',
-                        display: 'block',
-                        transition: 'transform 0.6s ease',
-                      }}
+                      alt={`${work.titleKey} — Jose Maria Mijares`}
+                      style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', transition: 'transform 0.6s ease' }}
                     />
                   </Box>
                   <Typography
-                    sx={{
-                      fontFamily: '"Cormorant Garamond", serif',
-                      fontSize: '1.05rem',
-                      fontWeight: 400,
-                      color: '#1A140C',
-                      letterSpacing: '0.02em',
-                      mb: 0.5,
-                    }}
+                    sx={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.05rem', fontWeight: 400, color: '#1A140C', letterSpacing: '0.02em', mb: 0.5 }}
                   >
-                    {work.title}
+                    {work.titleKey}
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{ fontSize: '0.75rem', color: '#9E9189', letterSpacing: '0.05em' }}
-                  >
-                    {work.detail}
+                  <Typography variant="body2" sx={{ fontSize: '0.75rem', color: '#9E9189', letterSpacing: '0.05em' }}>
+                    {work.detail} · {t('products.medium')}
                   </Typography>
                 </Link>
               </Grid>
@@ -195,14 +157,9 @@ const Home = () => {
               variant="text"
               component={Link}
               to="/products"
-              sx={{
-                fontSize: '0.7rem',
-                letterSpacing: '0.2em',
-                color: '#1A140C',
-                '&:hover': { color: '#8C4A2F', backgroundColor: 'transparent' },
-              }}
+              sx={{ fontSize: '0.7rem', letterSpacing: '0.2em', color: '#1A140C', '&:hover': { color: '#8C4A2F', backgroundColor: 'transparent' } }}
             >
-              View All Works
+              {t('home.viewAllWorks')}
             </Button>
           </Box>
         </Container>
@@ -223,21 +180,13 @@ const Home = () => {
               fontStyle: 'italic',
             }}
           >
-            "His work fuses constructivism and biomorphic surrealism with baroque elements
-            from colonial Caribbean design."
+            {t('home.quote')}
           </Typography>
           <Typography
             variant="overline"
-            sx={{
-              display: 'block',
-              textAlign: 'center',
-              mt: 4,
-              letterSpacing: '0.2em',
-              fontSize: '0.65rem',
-              color: '#8C4A2F',
-            }}
+            sx={{ display: 'block', textAlign: 'center', mt: 4, letterSpacing: '0.2em', fontSize: '0.65rem', color: '#8C4A2F' }}
           >
-            — Florida International University, 2001
+            {t('home.quoteAttribution')}
           </Typography>
         </Container>
       </Box>

@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import { Container, Typography, Box, Divider, Grid } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const AboutUs = () => {
-  useEffect(() => { document.title = 'About the Artist | Mijares Gallery'; }, []);
+  const { t } = useTranslation();
+
+  useEffect(() => { document.title = `${t('about.heading')} | Mijares Gallery`; });
 
   return (
     <>
@@ -20,7 +23,7 @@ const AboutUs = () => {
             variant="overline"
             sx={{ display: 'block', letterSpacing: '0.25em', fontSize: '0.65rem', color: '#8C4A2F', mb: 3 }}
           >
-            The Artist
+            {t('about.category')}
           </Typography>
           <Typography
             variant="h2"
@@ -54,7 +57,7 @@ const AboutUs = () => {
                 variant="body2"
                 sx={{ mt: 1.5, fontSize: '0.7rem', letterSpacing: '0.08em', color: '#9E9189', textAlign: 'center' }}
               >
-                Jose Maria Mijares in his studio, Miami
+                {t('about.photoCaption')}
               </Typography>
             </Grid>
 
@@ -63,7 +66,7 @@ const AboutUs = () => {
                 variant="overline"
                 sx={{ letterSpacing: '0.2em', color: '#9E9189', fontSize: '0.68rem' }}
               >
-                Havana, 1921 — Miami, 2004
+                {t('about.dates')}
               </Typography>
               <Divider sx={{ width: 32, mt: 2, mb: 4, borderColor: '#8C4A2F' }} />
               <Typography
@@ -76,26 +79,16 @@ const AboutUs = () => {
                   color: '#1A140C',
                 }}
               >
-                A Legacy in Cuban Modern Art
+                {t('about.heading')}
               </Typography>
               <Typography variant="body1" sx={{ lineHeight: 2, color: '#1A140C', mb: 3 }}>
-                Jose Maria Mijares was born in Havana in 1921 and trained at the prestigious
-                San Alejandro Academy of Fine Arts on scholarship at age 16. Influenced by the
-                Havana School — Carlos Enríquez, René Portocarrero, and Fidelio Ponce — he became
-                a founding member of <em>Los Diez Pintores Concretos</em>, a landmark movement
-                in pre-Castro Cuban art history.
+                {t('about.bio1')}
               </Typography>
               <Typography variant="body1" sx={{ lineHeight: 2, color: '#1A140C', mb: 3 }}>
-                He participated in the Venice Biennial (1952, 1956) and São Paulo Biennial (1953),
-                and exhibited in Paris, Tokyo, Caracas, Washington D.C., and Miami. In 1968 he
-                left Cuba following Castro's rise, settling in Miami where his work evolved
-                toward figurative painting focused on people and Cuban landscapes.
+                {t('about.bio2')}
               </Typography>
               <Typography variant="body1" sx={{ lineHeight: 2, color: '#1A140C' }}>
-                He received an Honorary Doctorate in Fine Arts from Florida International
-                University in 2001 and opened the Mijares Gallery in Coral Gables in 2002.
-                His work is held in MoMA New York, the Lowe Art Museum, and the Museum of
-                Modern Art of Latin America in Washington D.C.
+                {t('about.bio3')}
               </Typography>
             </Grid>
           </Grid>
@@ -110,24 +103,14 @@ const AboutUs = () => {
               variant="overline"
               sx={{ display: 'block', letterSpacing: '0.25em', fontSize: '0.65rem', color: '#8C4A2F', mb: 3 }}
             >
-              The Gallery
+              {t('about.galleryCategory')}
             </Typography>
             <Divider sx={{ width: 32, mx: 'auto', mb: 5, borderColor: '#8C4A2F' }} />
-            <Typography
-              variant="body1"
-              sx={{ lineHeight: 2, color: '#F8F4EE', maxWidth: 520, mx: 'auto', mb: 3 }}
-            >
-              Mijares Gallery is run by his family, continuing the legacy of a man who painted
-              six hours a day from sunrise until the end of his life. The works offered here —
-              originals, certified prints, and art on object — come directly from his estate.
+            <Typography variant="body1" sx={{ lineHeight: 2, color: '#F8F4EE', maxWidth: 520, mx: 'auto', mb: 3 }}>
+              {t('about.mission1')}
             </Typography>
-            <Typography
-              variant="body1"
-              sx={{ lineHeight: 2, color: '#9E9189', maxWidth: 520, mx: 'auto' }}
-            >
-              This is not a posthumous archive. It is a living business, run by people who
-              knew him, dedicated to placing his work in homes where it will be seen and
-              loved for generations.
+            <Typography variant="body1" sx={{ lineHeight: 2, color: '#9E9189', maxWidth: 520, mx: 'auto' }}>
+              {t('about.mission2')}
             </Typography>
           </Box>
         </Container>

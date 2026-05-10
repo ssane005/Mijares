@@ -3,205 +3,128 @@ import { Container, Typography, Box, Divider, Grid } from '@mui/material';
 const AboutUs = () => {
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero */}
       <Box
         sx={{
-          py: { xs: 8, md: 12 },
+          py: { xs: 10, md: 14 },
           textAlign: 'center',
-          backgroundColor: '#334C64',
+          backgroundColor: '#F8F4EE',
+          borderBottom: '1px solid #D4CCC6',
         }}
       >
         <Container maxWidth="md">
+          <Typography
+            variant="overline"
+            sx={{ display: 'block', letterSpacing: '0.25em', fontSize: '0.65rem', color: '#8C4A2F', mb: 3 }}
+          >
+            The Artist
+          </Typography>
           <Typography
             variant="h2"
             component="h1"
             sx={{
               fontFamily: '"Cormorant Garamond", serif',
-              fontWeight: 400,
-              fontSize: { xs: '2.5rem', md: '3.5rem' },
+              fontWeight: 300,
+              fontSize: { xs: '2.5rem', md: '4rem' },
               letterSpacing: '0.04em',
-              mb: 3,
-              color: '#ffffff',
+              color: '#1A140C',
             }}
           >
-            About Us
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              maxWidth: 500,
-              mx: 'auto',
-              fontSize: '1.05rem',
-              lineHeight: 1.9,
-              color: '#C6D1D8',
-            }}
-          >
-            Celebrating the life and legacy of a master artist
+            Jose Maria Mijares
           </Typography>
         </Container>
       </Box>
 
-      {/* Artist Biography Section */}
-      <Box sx={{ backgroundColor: '#C6D1D8', py: { xs: 6, md: 10 } }}>
+      {/* Biography */}
+      <Box sx={{ backgroundColor: '#F8F4EE', py: { xs: 8, md: 14 } }}>
         <Container maxWidth="lg">
-          <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
-            {/* Artist Image */}
-            <Grid size={{ xs: 12, md: 5 }}>
-              <Box
-                sx={{
-                  overflow: 'hidden',
-                  border: '1px solid #213D57',
-                }}
-              >
+          <Grid container spacing={{ xs: 6, md: 10 }} alignItems="center">
+            <Grid item xs={12} md={5}>
+              <Box sx={{ overflow: 'hidden', border: '1px solid #D4CCC6' }}>
                 <img
-                  src="/images/mijares.jpg"
-                  alt="The Artist"
-                  style={{
-                    width: '100%',
-                    display: 'block',
-                    objectFit: 'cover',
-                  }}
+                  src="https://secure.cernudaarte.com/uploads/paintings/large/3435_1.jpg"
+                  alt="Self-portrait — Jose Maria Mijares"
+                  style={{ width: '100%', display: 'block', objectFit: 'cover' }}
                 />
               </Box>
+              <Typography
+                variant="body2"
+                sx={{ mt: 1.5, fontSize: '0.7rem', letterSpacing: '0.08em', color: '#9E9189', textAlign: 'center' }}
+              >
+                Self-portrait · Jose Maria Mijares
+              </Typography>
             </Grid>
 
-            {/* Biography Text */}
-            <Grid size={{ xs: 12, md: 7 }}>
-              <Box>
-                <Typography
-                  variant="overline"
-                  sx={{
-                    letterSpacing: '0.2em',
-                    color: '#475F76',
-                    fontSize: '0.75rem',
-                  }}
-                >
-                  The Artist
-                </Typography>
-                <Divider
-                  sx={{
-                    width: 60,
-                    mt: 2,
-                    mb: 3,
-                    borderColor: '#213D57',
-                  }}
-                />
-                <Typography
-                  variant="h3"
-                  sx={{
-                    fontFamily: '"Cormorant Garamond", serif',
-                    fontWeight: 500,
-                    fontSize: { xs: '1.8rem', md: '2.2rem' },
-                    mb: 3,
-                    color: '#213D57',
-                  }}
-                >
-                  A Legacy in Art
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    lineHeight: 1.9,
-                    color: '#334C64',
-                    mb: 2,
-                  }}
-                >
-                  Born with an innate gift for capturing the essence of life on canvas,
-                  the artist dedicated decades to perfecting their craft. Their work
-                  spans a remarkable journey through various styles and mediums, always
-                  maintaining a distinctive voice that speaks to the human experience.
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    lineHeight: 1.9,
-                    color: '#334C64',
-                    mb: 2,
-                  }}
-                >
-                  Throughout their career, they created pieces that have moved collectors
-                  and art enthusiasts alike. Each brushstroke tells a story, each color
-                  choice reflects a deep understanding of emotion and beauty.
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    lineHeight: 1.9,
-                    color: '#334C64',
-                  }}
-                >
-                  Though no longer with us, their artistic vision continues to inspire
-                  and their works remain timeless treasures that connect us to something
-                  greater than ourselves.
-                </Typography>
-              </Box>
+            <Grid item xs={12} md={7}>
+              <Typography
+                variant="overline"
+                sx={{ letterSpacing: '0.2em', color: '#9E9189', fontSize: '0.68rem' }}
+              >
+                Havana, 1921 — Miami, 2004
+              </Typography>
+              <Divider sx={{ width: 32, mt: 2, mb: 4, borderColor: '#8C4A2F' }} />
+              <Typography
+                variant="h4"
+                sx={{
+                  fontFamily: '"Cormorant Garamond", serif',
+                  fontWeight: 300,
+                  fontSize: { xs: '1.8rem', md: '2.4rem' },
+                  mb: 4,
+                  color: '#1A140C',
+                }}
+              >
+                A Legacy in Cuban Modern Art
+              </Typography>
+              <Typography variant="body1" sx={{ lineHeight: 2, color: '#1A140C', mb: 3 }}>
+                Jose Maria Mijares was born in Havana in 1921 and trained at the prestigious
+                San Alejandro Academy of Fine Arts on scholarship at age 16. Influenced by the
+                Havana School — Carlos Enríquez, René Portocarrero, and Fidelio Ponce — he became
+                a founding member of <em>Los Diez Pintores Concretos</em>, a landmark movement
+                in pre-Castro Cuban art history.
+              </Typography>
+              <Typography variant="body1" sx={{ lineHeight: 2, color: '#1A140C', mb: 3 }}>
+                He participated in the Venice Biennial (1952, 1956) and São Paulo Biennial (1953),
+                and exhibited in Paris, Tokyo, Caracas, Washington D.C., and Miami. In 1968 he
+                left Cuba following Castro's rise, settling in Miami where his work evolved
+                toward figurative painting focused on people and Cuban landscapes.
+              </Typography>
+              <Typography variant="body1" sx={{ lineHeight: 2, color: '#1A140C' }}>
+                He received an Honorary Doctorate in Fine Arts from Florida International
+                University in 2001 and opened the Mijares Gallery in Coral Gables in 2002.
+                His work is held in MoMA New York, the Lowe Art Museum, and the Museum of
+                Modern Art of Latin America in Washington D.C.
+              </Typography>
             </Grid>
           </Grid>
         </Container>
       </Box>
 
-      {/* Gallery Mission Section */}
-      <Box sx={{ backgroundColor: '#ffffff', py: { xs: 6, md: 10 } }}>
-        <Container maxWidth="md">
+      {/* Mission */}
+      <Box sx={{ backgroundColor: '#1A140C', py: { xs: 10, md: 14 } }}>
+        <Container maxWidth="sm">
           <Box sx={{ textAlign: 'center' }}>
             <Typography
               variant="overline"
-              sx={{
-                letterSpacing: '0.2em',
-                color: '#475F76',
-                fontSize: '0.75rem',
-              }}
+              sx={{ display: 'block', letterSpacing: '0.25em', fontSize: '0.65rem', color: '#8C4A2F', mb: 3 }}
             >
-              Our Mission
+              The Gallery
             </Typography>
-            <Divider
-              sx={{
-                width: 60,
-                mx: 'auto',
-                mt: 2,
-                mb: 4,
-                borderColor: '#213D57',
-              }}
-            />
+            <Divider sx={{ width: 32, mx: 'auto', mb: 5, borderColor: '#8C4A2F' }} />
             <Typography
-              variant="h4"
-              sx={{
-                fontFamily: '"Cormorant Garamond", serif',
-                fontWeight: 400,
-                fontSize: { xs: '1.5rem', md: '2rem' },
-                mb: 4,
-                color: '#213D57',
-              }}
+              variant="body1"
+              sx={{ lineHeight: 2, color: '#F8F4EE', maxWidth: 520, mx: 'auto', mb: 3 }}
             >
-              Preserving Art, Sharing Beauty
+              Mijares Gallery is run by his family, continuing the legacy of a man who painted
+              six hours a day from sunrise until the end of his life. The works offered here —
+              originals, certified prints, and art on object — come directly from his estate.
             </Typography>
             <Typography
               variant="body1"
-              sx={{
-                lineHeight: 2,
-                color: '#334C64',
-                maxWidth: 600,
-                mx: 'auto',
-                mb: 3,
-              }}
+              sx={{ lineHeight: 2, color: '#9E9189', maxWidth: 520, mx: 'auto' }}
             >
-              Mijares Gallery is dedicated to preserving and sharing the remarkable
-              works of a beloved artist. We believe that art has the power to
-              transform spaces, evoke emotions, and create lasting connections
-              between the creator and the collector.
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{
-                lineHeight: 2,
-                color: '#334C64',
-                maxWidth: 600,
-                mx: 'auto',
-              }}
-            >
-              Every piece in our collection has been carefully curated to represent
-              the finest examples of the artist's work. We invite you to explore,
-              discover, and find the piece that speaks to your soul.
+              This is not a posthumous archive. It is a living business, run by people who
+              knew him, dedicated to placing his work in homes where it will be seen and
+              loved for generations.
             </Typography>
           </Box>
         </Container>

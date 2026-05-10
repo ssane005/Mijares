@@ -102,15 +102,14 @@ const Home = () => {
           }}
         >
           <img
-            src="/Mijares/images/plate-harbor-geometric.jpg"
-            alt="Harbor — Geometric Composition — Jose Maria Mijares"
+            src="https://secure.cernudaarte.com/uploads/paintings/large/6314_1.jpg"
+            alt="Havana Lady in the Balcony — Jose Maria Mijares"
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'contain',
+              objectFit: 'cover',
+              objectPosition: 'center top',
               display: 'block',
-              padding: '40px',
-              backgroundColor: '#EFEBE4',
             }}
           />
         </Box>

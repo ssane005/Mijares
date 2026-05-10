@@ -42,8 +42,8 @@ const AboutUs = () => {
             <Grid item xs={12} md={5}>
               <Box sx={{ overflow: 'hidden', border: '1px solid #D4CCC6' }}>
                 <img
-                  src="https://secure.cernudaarte.com/uploads/paintings/large/3435_1.jpg"
-                  alt="Self-portrait — Jose Maria Mijares"
+                  src="/Mijares/images/mijares.jpg"
+                  alt="Jose Maria Mijares at work in his studio"
                   style={{ width: '100%', display: 'block', objectFit: 'cover' }}
                 />
               </Box>
@@ -51,7 +51,7 @@ const AboutUs = () => {
                 variant="body2"
                 sx={{ mt: 1.5, fontSize: '0.7rem', letterSpacing: '0.08em', color: '#9E9189', textAlign: 'center' }}
               >
-                Self-portrait · Jose Maria Mijares
+                Jose Maria Mijares in his studio, Miami
               </Typography>
             </Grid>
 

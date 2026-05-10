@@ -102,14 +102,15 @@ const Home = () => {
           }}
         >
           <img
-            src="https://secure.cernudaarte.com/uploads/paintings/large/6314_1.jpg"
-            alt="Havana Lady in the Balcony — Jose Maria Mijares"
+            src="/Mijares/images/plate-cream-girl-with-rose.jpg"
+            alt="Girl with Rose — Jose Maria Mijares"
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center top',
+              objectFit: 'contain',
               display: 'block',
+              padding: '40px',
+              backgroundColor: '#EFEBE4',
             }}
           />
         </Box>
